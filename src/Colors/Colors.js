@@ -1,4 +1,6 @@
 export default {
   M3SysLightPrimary: '#00639C',
-  White: '#fff',
+  M3SyslightOnPrimary: '#fff',
+  M3syslightSurfaceariant: '#DEE3EB',
+  M3SysLightOnSurface: '#1A1C1E',
 };
