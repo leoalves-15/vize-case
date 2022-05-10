@@ -1,11 +1,15 @@
-import React, { createContext, useState, useMemo } from 'react';
+import React, {
+  createContext, useState, useMemo,
+} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginContext = createContext({});
 
 function LoginProvider(props) {
-  const [isLogged, setLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [erro, setErro] = useState('');
+  const navigate = useNavigate();
 
   const Register = (name, email, password) => {
     const data = JSON.stringify({
@@ -25,12 +29,8 @@ function LoginProvider(props) {
 
     axios(config)
       .then((response) => {
-        localStorage.setItem('sessionLogin', {
-          name: response.data.name,
-          email: response.data.email,
-          id: response.data.id,
-          token: response.data.token,
-        });
+        sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
+        navigate('/');
       })
       .catch((error) => {
         setErro(error);
@@ -54,20 +54,33 @@ function LoginProvider(props) {
 
     axios(config)
       .then((response) => {
-        localStorage.setItem('sessionLogin', {
-          name: response.data.name,
-          email: response.data.email,
-          id: response.data.id,
-          token: response.data.token,
-        });
+        sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
+        navigate('/');
       })
       .catch((error) => {
         setErro(error);
       });
   };
 
+  const GetCurrentProfile = () => {
+    let session = sessionStorage.getItem('sessionLogin');
+    session = JSON.parse(session);
+    if (session) {
+      setIsLogged(true);
+    }
+    return session;
+  };
+
+  const VerifyLogin = () => {
+    const profile = GetCurrentProfile();
+    if (typeof profile?.Token !== 'undefined') {
+      navigate('/');
+    } else {
+      navigate('/Login');
+    }
+  };
   const value = useMemo(() => ({
-    isLogged, setLogged, Register, Login, erro,
+    Register, Login, isLogged, GetCurrentProfile, erro, VerifyLogin,
   }), []);
 
   return (

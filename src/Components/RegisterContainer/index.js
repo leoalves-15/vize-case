@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import {
   Container, UserInput, RegisterButton, Form,
 } from '../GenericComponents';
@@ -9,7 +8,6 @@ function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
 
   const { Register } = useContext(LoginContext);
 
@@ -17,7 +15,6 @@ function Login() {
     e.preventDefault();
     if (name && email && password) {
       Register(name, email, password);
-      // navigate('/Logged');
     }
   };
 

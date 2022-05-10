@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import {
   Container, UserInput, LoginButton, RegisterButton, Form,
 } from '../GenericComponents';
@@ -10,14 +9,10 @@ function RegisterContainer() {
   const [password, setPassword] = useState('');
   const { Login } = useContext(LoginContext);
 
-  // const navigate = useNavigate();
-
   const UserLogin = (e) => {
     e.preventDefault();
     if (email && password) {
       Login(email, password);
-
-      // navigate('/Logged');
     }
   };
 
