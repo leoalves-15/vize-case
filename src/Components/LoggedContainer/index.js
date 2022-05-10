@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from '../GenericComponents';
+import { Table, Title } from './Table';
 
 function LoggedContainer(props) {
+  const [profilesArray, setProfileArray] = useState([]);
   const { profiles = [] } = props;
+
+  useEffect(() => {
+    setProfileArray(profiles.slice(0, 5));
+  }, [props]);
+
   return (
     <Container>
-      <table>
+      <Title>Usuários:</Title>
+      <Table>
         <tr>
           <th>ID</th>
           <th>Nome</th>
         </tr>
-        {profiles.map((profile) => (
+        {profilesArray.map((profile) => (
           <tr>
             <td>{profile.id}</td>
             <td>{profile.name}</td>
           </tr>
         ))}
-      </table>
+      </Table>
     </Container>
   );
 }
