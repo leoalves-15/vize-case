@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../../Contexts/login-contexts';
+import LoggedContainer from '../../Components/LoggedContainer';
+import { Container } from '../../Components/GenericComponents';
 
 function Logged() {
   const [currentProfile, setCurrentProfile] = useState({});
-  const { GetCurrentProfile, VerifyLogin } = useContext(LoginContext);
+  const [profiles, setProfiles] = useState({});
+  const { GetCurrentProfile, VerifyLogin, GetProfiles } = useContext(LoginContext);
 
   useEffect(() => {
     const currentProfileAUX = GetCurrentProfile();
@@ -11,8 +14,21 @@ function Logged() {
     setCurrentProfile(currentProfileAUX);
   }, [GetCurrentProfile]);
 
+  useEffect(() => {
+    (async () => {
+      const result = await GetProfiles(1);
+      setProfiles(result);
+    })();
+  }, [GetProfiles]);
+
+  useEffect(() => {
+    console.log('profiles', profiles);
+  }, [profiles]);
+
   return (
-    <p>{typeof currentProfile?.Token !== 'undefined' ? 'entrou' : 'não entrou'}</p>
+    <Container>
+      {typeof currentProfile?.Token !== 'undefined' && (<LoggedContainer profiles={profiles?.data} />)}
+    </Container>
   );
 }
 

@@ -71,6 +71,26 @@ function LoginProvider(props) {
     return session;
   };
 
+  async function GetProfiles(page) {
+    const profile = GetCurrentProfile();
+    const data = JSON.stringify({
+      email: profile?.Email,
+    });
+
+    const config = {
+      method: 'get',
+      url: `https://devfront.vize.solutions/api/users?page=${page}`,
+      headers: {
+        Authorization: `Bearer ${profile?.Token}`,
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    return axios(config)
+      .then((response) => response.data)
+      .catch((error) => (error));
+  }
+
   const VerifyLogin = () => {
     const profile = GetCurrentProfile();
     if (typeof profile?.Token !== 'undefined') {
@@ -80,7 +100,7 @@ function LoginProvider(props) {
     }
   };
   const value = useMemo(() => ({
-    Register, Login, isLogged, GetCurrentProfile, erro, VerifyLogin,
+    Register, Login, isLogged, GetCurrentProfile, erro, VerifyLogin, GetProfiles,
   }), []);
 
   return (
