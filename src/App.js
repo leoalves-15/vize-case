@@ -1,15 +1,20 @@
 import React from 'react';
-import { LoginButton, RegisterButton, UserInput } from './Components/GenericComponents';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import LoginProvider from './Contexts/login-contexts';
 
 function App() {
   return (
     <div className="App">
-      <LoginButton> teste</LoginButton>
-      <RegisterButton> teste</RegisterButton>
-      <UserInput>
-        <input type="text" required />
-        <span>Nome</span>
-      </UserInput>
+      <LoginProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login />}> </Route>
+            <Route path="/Register" element={<Register />}> </Route>
+          </Routes>
+        </Router>
+      </LoginProvider>
     </div>
   );
 }
