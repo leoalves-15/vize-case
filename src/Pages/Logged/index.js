@@ -21,10 +21,6 @@ function Logged() {
     })();
   }, [GetProfiles]);
 
-  useEffect(() => {
-    console.log('profiles', profiles);
-  }, [profiles]);
-
   return (
     <Container>
       {typeof currentProfile?.Token !== 'undefined' && (<LoggedContainer profiles={profiles?.data} />)}

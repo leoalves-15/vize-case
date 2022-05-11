@@ -23,6 +23,19 @@ export const LoginButton = styled(ButtonDefault)`
   margin-bottom: 39px;
 `;
 
+export const ErrorAlert = styled.p`
+  color: ${Colors.M3ReadOnlyLightRed};
+  font-size: 10px;
+  margin-top: -15px;
+  margin-bottom: 4px;
+`;
+
+export const RowForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+`;
+
 export const RegisterButton = styled(ButtonDefault)`
   width: 259px;
 `;

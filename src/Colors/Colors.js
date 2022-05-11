@@ -5,4 +5,5 @@ export default {
   M3SysLightOnSurface: '#1A1C1E',
   M3SysLightPrimaryContainer: '#CCE5FF',
   M3ReadOnlyLightBlack: 'black',
+  M3ReadOnlyLightRed: 'red',
 };

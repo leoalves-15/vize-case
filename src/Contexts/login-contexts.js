@@ -52,10 +52,12 @@ function LoginProvider(props) {
       data,
     };
 
-    axios(config)
+    return axios(config)
       .then((response) => {
-        sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
-        navigate('/');
+        if (response.data.message === 'success') {
+          sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
+          navigate('/');
+        }
       })
       .catch((error) => {
         setErro(error);

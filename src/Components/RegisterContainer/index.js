@@ -26,7 +26,7 @@ function Login() {
           <span>Usuário (email)</span>
         </UserInput>
         <UserInput>
-          <input type="password" value={password} onChange={(e) => { setPassword((e.target.value)); }} />
+          <input type="password" name="password" autoComplete="on" value={password} onChange={(e) => { setPassword((e.target.value)); }} />
           <span />
         </UserInput>
         <UserInput>
