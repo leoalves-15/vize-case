@@ -28,6 +28,7 @@ export const ErrorAlert = styled.p`
   font-size: 10px;
   margin-top: -15px;
   margin-bottom: 4px;
+  height: 10px;
 `;
 
 export const RowForm = styled.div`
@@ -52,6 +53,9 @@ export const UserInput = styled.div`
     outline: none;
     border-bottom: 1px solid ${Colors.M3SysLightOnSurface};
     padding-left: 20px;
+    @media (max-width: 500px) {
+      width: 300px;
+    }
   }
   input:focus + span, input:valid + span {
     top: 20px;

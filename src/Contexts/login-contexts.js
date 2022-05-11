@@ -11,6 +11,9 @@ function LoginProvider({ children }) {
   const [erroEmailLogin, setErroEmailLogin] = useState(false);
   const [erroPasswordLogin, setErroPasswordLogin] = useState(false);
   const [messageLoginErro, setMessageLoginErro] = useState('');
+  const [messageRegisterPassword, setMessageRegisterPassword] = useState('');
+  const [messageRegisterEmail, setMessageRegisterEmail] = useState('');
+  const [messageRegisterName, setMessageRegisterName] = useState('');
   const [currentProfile, setCurrentProfile] = useState({});
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
@@ -33,11 +36,23 @@ function LoginProvider({ children }) {
 
     axios(config)
       .then((response) => {
-        sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
-        navigate('/');
+        if (response.data.message === 'success') {
+          sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
+          navigate('/');
+        }
       })
       .catch((error) => {
         setErro(error);
+        const response = error.response.data.ModelState;
+        if (typeof response['User.password'] !== 'undefined') {
+          setMessageRegisterPassword(response['User.password'][0]);
+        }
+        if (typeof response['User.name'] !== 'undefined') {
+          setMessageRegisterName(response['User.name'][0]);
+        }
+        if (typeof response['User.email'] !== 'undefined') {
+          setMessageRegisterEmail(response['User.email'][0]);
+        }
       });
   };
 
@@ -123,12 +138,18 @@ function LoginProvider({ children }) {
     messageLoginErro,
     setMessageLoginErro,
     currentProfile,
+    messageRegisterPassword,
+    messageRegisterEmail,
+    messageRegisterName,
   }), [
     isLogged,
     erro,
     erroEmailLogin,
     erroPasswordLogin,
     messageLoginErro,
+    messageRegisterPassword,
+    messageRegisterEmail,
+    messageRegisterName,
   ]);
 
   return (

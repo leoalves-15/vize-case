@@ -7,6 +7,9 @@ export const Table = styled.table`
   border-bottom: 1px solid ${Colors.M3SysLightPrimaryContainer};
   border-left: 1px solid ${Colors.M3SysLightPrimaryContainer};
   border-right: 1px solid ${Colors.M3SysLightPrimaryContainer};
+  @media (max-width: 500px) {
+    width: 90vw;
+  }
   > tr{
     height: 40px;
   }
@@ -40,4 +43,7 @@ export const Title = styled.h1`
   font-size: 32px;
   line-height: 64px;
   color: ${Colors.M3ReadOnlyLightBlack};
+  @media (max-width: 500px) {
+    width: 90vw;
+  }
   `;
