@@ -4,15 +4,14 @@ import LoggedContainer from '../../Components/LoggedContainer';
 import { Container } from '../../Components/GenericComponents';
 
 function Logged() {
-  const [currentProfile, setCurrentProfile] = useState({});
   const [profiles, setProfiles] = useState({});
-  const { GetCurrentProfile, VerifyLogin, GetProfiles } = useContext(LoginContext);
+  const {
+    VerifyLogin, GetProfiles, currentProfile, isLogged,
+  } = useContext(LoginContext);
 
   useEffect(() => {
-    const currentProfileAUX = GetCurrentProfile();
-    VerifyLogin(currentProfileAUX);
-    setCurrentProfile(currentProfileAUX);
-  }, [GetCurrentProfile]);
+    VerifyLogin(currentProfile);
+  }, [currentProfile]);
 
   useEffect(() => {
     (async () => {
@@ -23,7 +22,7 @@ function Logged() {
 
   return (
     <Container>
-      {typeof currentProfile?.Token !== 'undefined' && (<LoggedContainer profiles={profiles?.data} />)}
+      {isLogged && (<LoggedContainer profiles={profiles?.data} />)}
     </Container>
   );
 }

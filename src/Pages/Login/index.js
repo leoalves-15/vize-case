@@ -4,11 +4,10 @@ import LoginContainer from '../../Components/LoginContainer';
 import { Container } from '../../Components/GenericComponents';
 
 function Login() {
-  const { GetCurrentProfile, VerifyLogin } = useContext(LoginContext);
+  const { currentProfile, VerifyLogin } = useContext(LoginContext);
   useEffect(() => {
-    const currentProfileAUX = GetCurrentProfile();
-    VerifyLogin(currentProfileAUX);
-  }, [GetCurrentProfile]);
+    VerifyLogin(currentProfile);
+  }, [currentProfile]);
 
   return (
     <Container>

@@ -11,6 +11,7 @@ function LoginProvider({ children }) {
   const [erroEmailLogin, setErroEmailLogin] = useState(false);
   const [erroPasswordLogin, setErroPasswordLogin] = useState(false);
   const [messageLoginErro, setMessageLoginErro] = useState('');
+  const [currentProfile, setCurrentProfile] = useState({});
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
@@ -76,6 +77,7 @@ function LoginProvider({ children }) {
     session = JSON.parse(session);
     if (session) {
       setIsLogged(true);
+      setCurrentProfile(session);
     }
     return session;
   };
@@ -100,8 +102,7 @@ function LoginProvider({ children }) {
       .catch((error) => (error));
   }
 
-  const VerifyLogin = () => {
-    const profile = GetCurrentProfile();
+  const VerifyLogin = (profile) => {
     if (typeof profile?.Token !== 'undefined') {
       navigate('/');
     } else {
@@ -112,7 +113,6 @@ function LoginProvider({ children }) {
     Register,
     Login,
     isLogged,
-    GetCurrentProfile,
     erro,
     VerifyLogin,
     GetProfiles,
@@ -122,6 +122,7 @@ function LoginProvider({ children }) {
     setErroPasswordLogin,
     messageLoginErro,
     setMessageLoginErro,
+    currentProfile,
   }), [
     isLogged,
     erro,
