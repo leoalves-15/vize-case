@@ -6,8 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 export const LoginContext = createContext({});
 
-function LoginProvider(props) {
+function LoginProvider({ children }) {
   const [isLogged, setIsLogged] = useState(false);
+  const [erroEmailLogin, setErroEmailLogin] = useState(false);
+  const [erroPasswordLogin, setErroPasswordLogin] = useState(false);
+  const [messageLoginErro, setMessageLoginErro] = useState('');
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
@@ -57,6 +60,10 @@ function LoginProvider(props) {
         if (response.data.message === 'success') {
           sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
           navigate('/');
+        } else {
+          setMessageLoginErro(response.data.message);
+          setErroEmailLogin(true);
+          setErroPasswordLogin(true);
         }
       })
       .catch((error) => {
@@ -102,14 +109,32 @@ function LoginProvider(props) {
     }
   };
   const value = useMemo(() => ({
-    Register, Login, isLogged, GetCurrentProfile, erro, VerifyLogin, GetProfiles,
-  }), []);
+    Register,
+    Login,
+    isLogged,
+    GetCurrentProfile,
+    erro,
+    VerifyLogin,
+    GetProfiles,
+    erroEmailLogin,
+    setErroEmailLogin,
+    erroPasswordLogin,
+    setErroPasswordLogin,
+    messageLoginErro,
+    setMessageLoginErro,
+  }), [
+    isLogged,
+    erro,
+    erroEmailLogin,
+    erroPasswordLogin,
+    messageLoginErro,
+  ]);
 
   return (
     <LoginContext.Provider
       value={value}
     >
-      {props.children}
+      {children}
     </LoginContext.Provider>
   );
 }

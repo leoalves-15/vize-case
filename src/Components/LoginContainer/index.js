@@ -8,9 +8,14 @@ import { LoginContext } from '../../Contexts/login-contexts';
 function RegisterContainer() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [messageLoginEmpyt, setMessageLoginEmpyt] = useState('');
   const [passwordError, setPasswordError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const { Login } = useContext(LoginContext);
+  const {
+    Login,
+    erroEmailLogin,
+    setErroEmailLogin,
+    messageLoginErro,
+  } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const UserLogin = (e) => {
@@ -19,10 +24,12 @@ function RegisterContainer() {
       Login(email, password);
     } else {
       if (!email) {
-        setEmailError(true);
+        setErroEmailLogin(true);
+        setMessageLoginEmpyt('Preencha todos os campos');
       }
       if (!password) {
         setPasswordError(true);
+        setMessageLoginEmpyt('Preencha todos os campos');
       }
     }
   };
@@ -35,14 +42,14 @@ function RegisterContainer() {
             <input type="text" value={email} onChange={(e) => { setEmail((e.target.value)); }} />
             <span>Usuário</span>
           </UserInput>
-          {emailError && (<ErrorAlert>Preencha corretamente o email</ErrorAlert>)}
+          {erroEmailLogin && (<ErrorAlert>{messageLoginEmpyt || messageLoginErro}</ErrorAlert>)}
         </RowForm>
         <RowForm>
           <UserInput>
             <input type="password" name="password" autoComplete="on" value={password} onChange={(e) => { setPassword((e.target.value)); }} />
             <span>Senha</span>
           </UserInput>
-          {passwordError && (<ErrorAlert>Preencha corretamente a senha</ErrorAlert>)}
+          {passwordError && (<ErrorAlert>{ messageLoginEmpyt || messageLoginErro}</ErrorAlert>)}
         </RowForm>
         <LoginButton type="submit">
           Login
