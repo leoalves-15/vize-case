@@ -13,18 +13,22 @@ function LoggedContainer(props) {
   return (
     <Container>
       <Title>Usuários:</Title>
-      <Table>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-        </tr>
-        {profilesArray.map((profile) => (
+      {typeof profilesArray[0]?.id !== 'undefined' ? (
+        <Table>
           <tr>
-            <td>{profile.id}</td>
-            <td>{profile.name}</td>
+            <th>ID</th>
+            <th>Nome</th>
           </tr>
-        ))}
-      </Table>
+          {profilesArray.map((profile) => (
+            <tr>
+              <td>{profile.id}</td>
+              <td>{profile.name}</td>
+            </tr>
+          ))}
+        </Table>
+      ) : (
+        <Title>carregando...</Title>
+      )}
     </Container>
   );
 }
