@@ -18,44 +18,6 @@ function LoginProvider({ children }) {
   const [erro, setErro] = useState('');
   const navigate = useNavigate();
 
-  const Register = (name, email, password) => {
-    const data = JSON.stringify({
-      name,
-      email,
-      password,
-    });
-
-    const config = {
-      method: 'post',
-      url: 'https://devfront.vize.solutions/api/authaccount/registration',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data,
-    };
-
-    axios(config)
-      .then((response) => {
-        if (response.data.message === 'success') {
-          sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
-          navigate('/Login');
-        }
-      })
-      .catch((error) => {
-        setErro(error);
-        const response = error.response.data.ModelState;
-        if (typeof response['User.password'] !== 'undefined') {
-          setMessageRegisterPassword(response['User.password'][0]);
-        }
-        if (typeof response['User.name'] !== 'undefined') {
-          setMessageRegisterName(response['User.name'][0]);
-        }
-        if (typeof response['User.email'] !== 'undefined') {
-          setMessageRegisterEmail(response['User.email'][0]);
-        }
-      });
-  };
-
   const Login = (email, password) => {
     const data = JSON.stringify({
       email,
@@ -84,6 +46,43 @@ function LoginProvider({ children }) {
       })
       .catch((error) => {
         setErro(error);
+      });
+  };
+
+  const Register = (name, email, password) => {
+    const data = JSON.stringify({
+      name,
+      email,
+      password,
+    });
+
+    const config = {
+      method: 'post',
+      url: 'https://devfront.vize.solutions/api/authaccount/registration',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+
+    axios(config)
+      .then((response) => {
+        if (response.data.message === 'success') {
+          Login(email, password);
+        }
+      })
+      .catch((error) => {
+        setErro(error);
+        const response = error.response.data.ModelState;
+        if (typeof response['User.password'] !== 'undefined') {
+          setMessageRegisterPassword(response['User.password'][0]);
+        }
+        if (typeof response['User.name'] !== 'undefined') {
+          setMessageRegisterName(response['User.name'][0]);
+        }
+        if (typeof response['User.email'] !== 'undefined') {
+          setMessageRegisterEmail(response['User.email'][0]);
+        }
       });
   };
 
