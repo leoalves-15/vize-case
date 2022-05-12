@@ -36,6 +36,7 @@ Prefirir utilizar o session pois ao fechar a aba, a sessão é excluida, adicion
 # Instruções
 
 > 1 - Depois do baixar o repositório, você deve rodar o comando npm install
+
 > 2 - Em seguida rodar o comando npm start
 
 ## Default Read.me
