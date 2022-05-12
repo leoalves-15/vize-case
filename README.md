@@ -1,12 +1,16 @@
 ## Instruções e informações
 # Resumo
-O projeto foi criado com finalidade avaliativa para prestação de serviçoes para Vize.
+O projeto foi criado com finalidade avaliativa para prestação de serviços para Vize.
 # Tecnologias utilizadas
 > Create React App( para criação do projeto ) (https://github.com/facebook/create-react-app).
 
 > Eslint - Aibnb( para padronização e qualidade do codigo ) (https://eslint.org/docs/user-guide/getting-started).
 
 > Axios ( como cliente HTTP ) (https://axios-http.com/ptbr/docs/intro).
+
+> React Router Dom ( para o roteamento ) (https://github.com/remix-run/react-router/blob/main/docs/getting-started/installation.md).
+
+> Styled-components ( para estilizar os componentes ) (https://styled-components.com/docs).
 
 > Api de login da Apps Love Workd ( backend, para registrar, logar e listar users ) (https://www.appsloveworld.com/sample-rest-api-url-for-testing-with-authentication/).
 
@@ -15,7 +19,19 @@ O projeto foi criado com finalidade avaliativa para prestação de serviçoes pa
 > Notion( para gerenciamento de task do projeto) (https://concise-vase-dc5.notion.site/2a799b87d12242f582c3bfc9ed9bc649?v=c9e49baaf2e549a0983d83a834fc0ef9).
 
 > mensageria: preferir usar a da api pois fica mais dinâmica. 
+# Funcionalidades
 
+> O users pode Criar, um cadastro, pode logar, e ver uma lista de users.
+
+> Responsividade
+# Observações
+
+    Limitei o campo de users para 5, para ficar mais fiel ao protótipo.
+Podem ver como foi o desenvolvimento do projeto no link do [Notion](https://concise-vase-dc5.notion.site/2a799b87d12242f582c3bfc9ed9bc649?v=c9e49baaf2e549a0983d83a834fc0ef9).
+
+As dificuldades que tive foi ao estilizar a tabela (exatamente como no protótipo) (iria fazer com display flex, entretanto ficou entendido que era requisito usar o table), além disso o input com a animação deu trabalho pois o seletor :valid não funcinou, não queria usar classe para não despradonizar, fazer todo o estilo somente com o Styled-Components sem classes, entretanto foi necessário, Eu iria fazer uma feature de logout mas como não tinha no protótipo, retirei, adicionei também responsividade.
+
+Prefirir utilizar o session pois ao fechar a aba, a sessão é excluida, adicionando uma melhor segurança que no localstorage.
 
 ## Default Read.me
 
