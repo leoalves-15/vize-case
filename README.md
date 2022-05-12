@@ -33,6 +33,11 @@ As dificuldades que tive foi ao estilizar a tabela (exatamente como no protótip
 
 Prefirir utilizar o session pois ao fechar a aba, a sessão é excluida, adicionando uma melhor segurança que no localstorage.
 
+# Instruções
+
+> 1 - Depois do baixar o repositório, você deve rodar o comando npm install
+> 2 - Em seguida rodar o comando npm start
+
 ## Default Read.me
 
 # Getting Started with Create React App
