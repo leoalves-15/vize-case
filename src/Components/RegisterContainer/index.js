@@ -45,7 +45,7 @@ function RegisterContainer() {
         <RowForm>
           <UserInput>
             <input type="text" value={email} onChange={(e) => { setEmail((e.target.value)); }} />
-            <span>Usuário</span>
+            <span className={email ? 'valid' : 'empty'}>Usuário</span>
           </UserInput>
           {haveErro && (
           <ErrorAlert>
@@ -57,7 +57,7 @@ function RegisterContainer() {
         <RowForm>
           <UserInput>
             <input type="password" name="password" autoComplete="on" value={password} onChange={(e) => { setPassword((e.target.value)); }} />
-            <span>Senha</span>
+            <span className={password ? 'valid' : 'empty'}>Senha</span>
           </UserInput>
           {haveErro && (
           <ErrorAlert>
@@ -68,7 +68,7 @@ function RegisterContainer() {
         <RowForm>
           <UserInput>
             <input type="text" value={name} onChange={(e) => { setName((e.target.value)); }} />
-            <span>Nome</span>
+            <span className={name ? 'valid' : 'empty'}>Nome</span>
           </UserInput>
           {haveErro && (
           <ErrorAlert>

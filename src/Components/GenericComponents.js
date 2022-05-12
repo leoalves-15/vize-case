@@ -57,8 +57,8 @@ export const UserInput = styled.div`
       width: 300px;
     }
   }
-  input:focus + span, input:valid + span {
-    top: 20px;
+  input:focus + span, .valid {
+    top: 10px;
     left: 10px;
     font-size: 12px;
     padding: 0 0px 0px 10px;
@@ -66,7 +66,7 @@ export const UserInput = styled.div`
   span{
     font-family: 'Roboto';
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 25px;
     font-size: 14px;
     font-style: normal;
