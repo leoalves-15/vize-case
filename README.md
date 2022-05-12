@@ -4,7 +4,7 @@ O projeto foi criado com finalidade avaliativa para prestação de serviços par
 # Tecnologias utilizadas
 > Create React App( para criação do projeto ) (https://github.com/facebook/create-react-app).
 
-> Eslint - Aibnb( para padronização e qualidade do codigo ) (https://eslint.org/docs/user-guide/getting-started).
+> Eslint - Aibnb( para padronização e qualidade do codigo ) (https://eslint.org/docs/user-guide/getting-started) .
 
 > Axios ( como cliente HTTP ) (https://axios-http.com/ptbr/docs/intro).
 
