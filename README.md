@@ -27,7 +27,7 @@ O projeto foi criado com finalidade avaliativa para prestação de serviços par
 # Observações
 
     Limitei o campo de users para 5, para ficar mais fiel ao protótipo.
-Podem ver como foi o desenvolvimento do projeto no link do [Notion](https://concise-vase-dc5.notion.site/2a799b87d12242f582c3bfc9ed9bc649?v=c9e49baaf2e549a0983d83a834fc0ef9).
+Podem ver como foi o andamento do projeto no link do [Notion](https://concise-vase-dc5.notion.site/2a799b87d12242f582c3bfc9ed9bc649?v=c9e49baaf2e549a0983d83a834fc0ef9), lá você pode ver as tasks e também as datas.
 
 As dificuldades que tive foi ao estilizar a tabela (exatamente como no protótipo) (iria fazer com display flex, entretanto ficou entendido que era requisito usar o table), além disso o input com a animação deu trabalho pois o seletor :valid não funcinou, não queria usar classe para não despradonizar, fazer todo o estilo somente com o Styled-Components sem classes, entretanto foi necessário, Eu iria fazer uma feature de logout mas como não tinha no protótipo, retirei, adicionei também responsividade.
 
