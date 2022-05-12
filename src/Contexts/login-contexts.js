@@ -38,7 +38,7 @@ function LoginProvider({ children }) {
       .then((response) => {
         if (response.data.message === 'success') {
           sessionStorage.setItem('sessionLogin', JSON.stringify(response.data.data));
-          navigate('/');
+          navigate('/Login');
         }
       })
       .catch((error) => {
